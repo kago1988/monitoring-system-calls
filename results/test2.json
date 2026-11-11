@@ -1,0 +1,30 @@
+[
+ {
+  "shared_buffers": "128MB",
+  "hits": 5792049,
+  "reads": 4138845,
+  "read_calls_traced": 4138801,
+  "size1": 81353883648,
+  "size2": 33905418240,
+  "size3": 1571397632,
+  "tps": 41349.061435,
+  "lost_events": 0,
+  "pct_shared_buffers": 58.323540660085584,
+  "pct_disk": 1.9315582262785203,
+  "pct_page_cache": 39.7449011136359
+ },
+ {
+  "shared_buffers": "2GB",
+  "hits": 11110808,
+  "reads": 191623,
+  "read_calls_traced": 191605,
+  "size1": 92589514752,
+  "size2": 1569775616,
+  "size3": 1570242560,
+  "tps": 47077.54357,
+  "lost_events": 0,
+  "pct_shared_buffers": 98.30458597800774,
+  "pct_disk": 1.6959183382760752,
+  "pct_page_cache": -0.0005043162838116455
+ }
+]

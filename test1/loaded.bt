@@ -1,0 +1,15 @@
+// loaded.bt: pages that the kernel reads for one file, with the cause
+// Usage: sudo bpftrace loaded.bt INODE > loaded.txt
+tracepoint:readahead:page_cache_sync_ra  /args->i_ino == $1/ { @cause[tid] = 1; }
+tracepoint:readahead:page_cache_async_ra /args->i_ino == $1/ { @cause[tid] = 2; }
+
+tracepoint:filemap:mm_filemap_add_to_page_cache /args->i_ino == $1/
+{
+  printf("%d %lu %u\n", @cause[tid], args->index, args->order);
+}
+
+tracepoint:syscalls:sys_exit_read,
+tracepoint:syscalls:sys_exit_pread64
+{
+  delete(@cause[tid]);
+}
